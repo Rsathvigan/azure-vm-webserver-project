@@ -98,3 +98,24 @@ Use wording that matches the work actually completed.
 ## Learning outcome
 
 This project provides a documented foundation for learning Azure compute, Linux administration, networking and web-server operations. The next step is to perform the actual deployment in an Azure environment when an eligible subscription is available.
+
+
+## Automated checks with GitHub Actions
+
+This repository includes a small Python test suite and a GitHub Actions workflow. On every push or pull request, the workflow checks that required files exist, that the HTML contains expected project sections, and that the README clearly states the Azure deployment has not yet been performed.
+
+### Run tests locally on Windows
+
+Install Python 3 if it is not already installed, then open PowerShell in the repository folder and run:
+
+```powershell
+py -m unittest discover -s tests -v
+```
+
+All tests should pass. If `py` is not recognized, install Python from https://www.python.org/downloads/windows/ and select **Add Python to PATH** during installation.
+
+### Enable GitHub Actions
+
+Upload the `.github/workflows/portfolio-checks.yml` file and `tests/test_portfolio.py` to the repository. Open the **Actions** tab and check the latest workflow run. A green check means the automated checks passed.
+
+This workflow tests the static project files. It does not provision, deploy or test a live Azure VM.
